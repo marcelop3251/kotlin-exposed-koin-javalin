@@ -1,0 +1,9 @@
+### gradle ###
+
+build/
+gradle.properties
+.gradle/
+
+### IntelliJ IDEA ###
+.idea/
+out/

@@ -1,0 +1,9 @@
+{
+  "name": "Marcelo",
+  "age": "30",
+  "address": {
+    "street": "Carlos bombonato",
+    "city": "Barrinha",
+    "number": "185"
+  }
+}

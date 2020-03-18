@@ -3,7 +3,7 @@ package com.register.application.web.controllers
 import com.register.application.web.errors.HandlerError
 import com.register.application.web.errors.HttpError
 import com.register.application.web.exceptions.InvalidPaiload
-import io.javalin.Context
+import io.javalin.http.Context
 import io.mockk.mockk
 import io.mockk.verify
 import org.eclipse.jetty.http.HttpStatus

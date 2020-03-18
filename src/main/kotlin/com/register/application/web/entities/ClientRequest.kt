@@ -13,5 +13,4 @@ class ClientRequest(
         age = this.age,
         address = this.address.toModel()
     )
-
 }

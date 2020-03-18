@@ -1,7 +1,8 @@
 package com.register.application.web.errors
 
 import com.register.application.web.exceptions.InvalidPaiload
-import io.javalin.Context
+import io.javalin.http.Context
+
 import org.eclipse.jetty.http.HttpStatus
 
 object HandlerError {

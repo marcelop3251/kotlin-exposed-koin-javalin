@@ -1,8 +1,7 @@
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.31'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
 }
-
 
 group 'com.register'
 version '1.0-SNAPSHOT'
@@ -15,7 +14,6 @@ repositories {
 dependencies {
     implementation('org.jetbrains.kotlin:kotlin-stdlib:1.3.31')
 }
-
 
 sourceSets {
     integrationTest{
@@ -34,7 +32,6 @@ test {
     useJUnitPlatform()
 }
 
-
 task integrationTest(type: Test) {
     description = 'executando integration test'
     useJUnitPlatform()
@@ -43,6 +40,7 @@ task integrationTest(type: Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
     outputs.upToDateWhen { false }
 }
+
 check.dependsOn integrationTest
 
 integrationTest.mustRunAfter test
@@ -50,21 +48,22 @@ integrationTest.mustRunAfter test
 
 dependencies {
     implementation ('org.jetbrains.kotlin:kotlin-stdlib-jdk8',
-            'io.javalin:javalin:2.8.0',
             'org.slf4j:slf4j-simple:1.7.26',
             'org.jetbrains.exposed:exposed:0.13.7',
             'com.zaxxer:HikariCP:3.1.0',
             'org.postgresql:postgresql:42.2.5',
             'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8',
             'org.koin:koin-core:2.0.0-GA4',
-            'org.jetbrains.kotlin:kotlin-reflect:1.3.40'
+            'org.jetbrains.kotlin:kotlin-reflect:1.3.40',
+            'io.javalin:javalin:3.7.0',
+            'com.natpryce:konfig:1.6.10.0'
     )
 
     testImplementation ('org.junit.jupiter:junit-jupiter:5.4.2',
             'khttp:khttp:0.1.0',
             'com.h2database:h2:1.4.197',
             'org.assertj:assertj-core:3.11.1',
-            'io.mockk:mockk:1.9'
+            'io.mockk:mockk:1.9.3'
     )
 
     

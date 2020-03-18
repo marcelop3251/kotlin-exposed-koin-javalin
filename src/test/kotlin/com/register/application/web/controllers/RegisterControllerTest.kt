@@ -5,8 +5,8 @@ import com.register.application.web.entities.ClientRequest
 import com.register.application.web.exceptions.InvalidPaiload
 import com.register.domain.entities.Client
 import com.register.domain.service.Service
-import io.javalin.BadRequestResponse
-import io.javalin.Context
+import io.javalin.http.BadRequestResponse
+import io.javalin.http.Context
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

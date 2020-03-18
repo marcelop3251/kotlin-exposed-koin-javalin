@@ -5,9 +5,9 @@ import com.register.application.web.entities.ClientResponse
 import com.register.application.web.exceptions.InvalidPaiload
 import com.register.domain.entities.Client
 import com.register.domain.service.Service
-import io.javalin.BadRequestResponse
-import io.javalin.Context
 import io.javalin.apibuilder.ApiBuilder.*
+import io.javalin.http.BadRequestResponse
+import io.javalin.http.Context
 import org.eclipse.jetty.http.HttpStatus
 import org.slf4j.LoggerFactory
 
@@ -20,7 +20,7 @@ class RegisterController(
     fun router() {
         path("/registry-client") {
             post { ctx -> ctx.json(registerClient(ctx)) }
-            get {ctx -> ctx.json(listClients(ctx))}
+            get { ctx -> ctx.json(listClients(ctx)) }
         }
 
     }

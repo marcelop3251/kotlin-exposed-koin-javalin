@@ -2,34 +2,44 @@ package com.register.application.web.controllers
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.natpryce.konfig.ConfigurationProperties
 import com.register.application.RegisterMain
-import com.register.application.config.DataSource
+import com.register.application.config.EnvironmentConfig
+import com.register.application.config.configModule
 import com.register.application.web.entities.ClientResponse
-import com.register.extensions.payload
-import com.zaxxer.hikari.HikariConfig
 import io.javalin.Javalin
 import io.mockk.every
-import io.mockk.mockkObject
+import io.mockk.mockkStatic
+import io.mockk.unmockkAll
 import khttp.responses.Response
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.koin.core.context.stopKoin
+import org.koin.dsl.module
 
-class TestRegisterController{
+class TestRegisterController {
 
     private lateinit var app: Javalin
     private val url = "http://localhost:7000/"
 
+    private val configEnvironment = ConfigurationProperties.fromResource("application.properties")
+
+    private val configModuleMock = module {
+        single { EnvironmentConfig(configEnvironment) }
+    }
+
     @BeforeEach
     fun setUp() {
-        mockDatasource()
+        mockkStatic("com.register.application.config.ConfigModuleDatabaseKt")
+        every { configModule } returns configModuleMock
         app = RegisterMain.startApplication()
     }
 
     @AfterEach
     fun tearDown() {
+        unmockkAll()
         app.stop()
         stopKoin()
     }
@@ -49,20 +59,11 @@ class TestRegisterController{
         assertEquals(200,response.statusCode)
     }
 
-    private fun mockDatasource(){
-        mockkObject(DataSource)
-        every { DataSource.getConfig() } returns HikariConfig().apply {
-            this.jdbcUrl = "jdbc:h2:mem:testdb"
-            this.maximumPoolSize = 10
-            this.username = "sa"
-            this.password = "sa"
-        }
-    }
-
     private fun createClient(): Response {
+        val resource = javaClass.getResource("/samples/registry-client.json").readText()
         return khttp.post(
             url = url + "registry-client",
-            data = "registry-client.json".payload()
+            data = resource
         )
     }
 }

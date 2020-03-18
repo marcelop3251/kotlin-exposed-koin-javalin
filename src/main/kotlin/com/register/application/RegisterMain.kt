@@ -1,5 +1,6 @@
 package com.register.application
 
+import com.register.application.config.configModule
 import com.register.application.config.modulesAll
 import com.register.application.web.RegisterInit
 import io.javalin.Javalin
@@ -16,7 +17,7 @@ object RegisterMain {
 
     fun startApplication(): Javalin{
         startKoin {
-            modules(modulesAll)
+            modules(modulesAll, configModule)
         }
 
        return RegisterInit.start()

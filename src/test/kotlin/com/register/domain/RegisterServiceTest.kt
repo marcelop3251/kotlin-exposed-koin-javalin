@@ -1,6 +1,6 @@
 package com.register.domain
 
-import com.register.application.build.ClientRequestBuild
+import com.register.application.builder.ClientRequestBuild
 import com.register.domain.entities.Client
 import com.register.domain.service.RegisterService
 import com.register.resources.repositoriesimpl.ClientRepository

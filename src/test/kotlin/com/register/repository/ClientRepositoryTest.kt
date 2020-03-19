@@ -1,6 +1,6 @@
 package com.register.repository
 
-import com.register.application.build.ClientRequestBuild
+import com.register.application.builder.ClientRequestBuild
 import com.register.resources.repositoriesimpl.AddressRepository
 import com.register.resources.repositoriesimpl.ClientRepository
 import org.assertj.core.api.Assertions.*

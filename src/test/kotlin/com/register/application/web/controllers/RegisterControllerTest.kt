@@ -1,6 +1,6 @@
 package com.register.application.web.controllers
 
-import com.register.application.build.ClientRequestBuild
+import com.register.application.builder.ClientRequestBuild
 import com.register.application.web.entities.ClientRequest
 import com.register.application.web.exceptions.InvalidPaiload
 import com.register.domain.entities.Client

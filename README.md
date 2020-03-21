@@ -3,7 +3,7 @@ Microservice with kotlin, exposed, koin and javalin.
 
 This microservice only demonstrates how we can combine the technologies mentioned.
 
-Environment variables that sould be available.
+Environment variables that should be available.
 ```
 DATABASE_JDBC_URL=<url of jdbc>
 DATABASE_USER_NAME=<user name>

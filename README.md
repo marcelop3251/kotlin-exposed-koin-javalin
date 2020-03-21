@@ -1,8 +1,16 @@
 # kotlin-exposed-koin-javalin
-Microservice with kotlin, exposed, koin and javalin
+Microservice with kotlin, exposed, koin and javalin.
 
-This microservice only demonstrates how we can combine the technologies mentioned
+This microservice only demonstrates how we can combine the technologies mentioned.
 
+Environment variables that sould be available.
+```
+DATABASE_JDBC_URL=<url of jdbc>
+DATABASE_USER_NAME=<user name>
+DATABASE_PASSOWORD=<password>
+DATABASE_DRIVER=<Class driver jdbc>
+POOL=<poll of connections>
+```
 ## Database
 
 * Postgres 

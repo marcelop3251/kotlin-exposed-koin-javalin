@@ -1,16 +1,15 @@
 package com.register.resources.repositoriesimpl
 
 import com.register.domain.entities.Address
-import com.register.domain.repository.Repository
+import com.register.domain.repository.AddressRepository
 import com.register.resources.schemas.AddressSchema
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.slf4j.LoggerFactory
-import java.lang.RuntimeException
 
-class AddressRepository : Repository<Address> {
+class AddressPostgresRepository : AddressRepository {
 
-    private val logger = LoggerFactory.getLogger(AddressRepository::class.java)
+    private val logger = LoggerFactory.getLogger(AddressPostgresRepository::class.java)
 
 
     override fun save(entity: Address): Address = transaction{
@@ -21,9 +20,5 @@ class AddressRepository : Repository<Address> {
             it[street] = entity.street
         }
         entity.copy(id = result.get(AddressSchema.id))
-    }
-
-    override fun findAll(): List<Address> {
-       throw RuntimeException("Not the implemention")
     }
 }

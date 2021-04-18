@@ -1,6 +1,6 @@
 package com.register.domain.entities
 
-data class Client(
+data class Customer(
     val id: Int? = null,
     val name:String,
     val age: Int,

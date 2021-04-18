@@ -6,7 +6,7 @@ import com.natpryce.konfig.ConfigurationProperties
 import com.register.application.RegisterMain
 import com.register.application.config.EnvironmentConfig
 import com.register.application.config.configModule
-import com.register.application.web.entities.ClientResponse
+import com.register.application.web.entities.CustomerResponse
 import io.javalin.Javalin
 import io.mockk.every
 import io.mockk.mockkStatic
@@ -45,24 +45,24 @@ class TestRegisterController {
     }
 
     @Test
-    fun testPostRegisterClient(){
+    fun testPostRegisterClient() {
         val response = createClient()
         assertEquals(201,response.statusCode)
     }
 
     @Test
-    fun testGetClient(){
-        createClient()
-        val response = khttp.get(url = url + "registry-client")
-        val client = response.text.deserialize<List<ClientResponse>>()
-        assertTrue(client.isNotEmpty())
-        assertEquals(200,response.statusCode)
+    fun testGetClient() {
+        val customerByPost = createClient().text.deserialize<CustomerResponse>()
+        val response = khttp.get(url = url + "registry-customer/${customerByPost.id}")
+        val client = response.text.deserialize<CustomerResponse>()
+        assertNotNull(client)
+        assertEquals(200, response.statusCode)
     }
 
     private fun createClient(): Response {
-        val resource = javaClass.getResource("/samples/registry-client.json").readText()
+        val resource = javaClass.getResource("/samples/registry-customer.json").readText()
         return khttp.post(
-            url = url + "registry-client",
+            url = url + "registry-customer",
             data = resource
         )
     }

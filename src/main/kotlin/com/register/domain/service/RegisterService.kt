@@ -1,18 +1,18 @@
 package com.register.domain.service
 
-import com.register.domain.entities.Client
-import com.register.domain.repository.Repository
+import com.register.domain.entities.Customer
+import com.register.domain.repository.CustomerRepository
 import org.slf4j.LoggerFactory
 import java.lang.Exception
 
 class RegisterService (
-    private val clientRepository: Repository<Client>
-) : Service<Client> {
+    private val customerRepository: CustomerRepository
+) : Service<Customer> {
 
     private val logger = LoggerFactory.getLogger(RegisterService::class.java)
 
-    override fun save(entity: Client): Client = try {
-        clientRepository.save(entity).also {
+    override fun save(entity: Customer): Customer = try {
+        customerRepository.save(entity).also {
             logger.info("Client save with success")
         }
     } catch (ex: Exception) {
@@ -20,8 +20,8 @@ class RegisterService (
         throw Exception("Not was possible save entity")
     }
 
-    override fun findAll(): List<Client> {
-        return clientRepository.findAll()
+    override fun findById(id: Int): Customer {
+        return customerRepository.findById(id)
     }
 
 }

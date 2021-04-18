@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+       <!-- <Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console> -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] [%X{correlation-id}] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <!--  <File type="File" name="File" fileName="./app.log">
+              <JsonLayout complete="true" compact="true" eventEol="true">
+                  <KeyValuePair key="myCustomField" value="myCustomValue" />
+              </JsonLayout>
+          </File> -->
+      </Appenders>
+      <Loggers>
+          <Root level="info">
+              <AppenderRef ref="Console"/>
+          </Root>
+      </Loggers>
+  </Configuration>

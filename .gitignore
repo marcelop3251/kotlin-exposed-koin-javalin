@@ -1,32 +1,10 @@
 ### gradle ###
 
-build/
+build/*
 gradle.properties
-.gradle/
+.gradle/*
+app.log
 
 ### IntelliJ IDEA ###
 .idea/
-out/
-
-### Eclipse ###
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
-
-### NetBeans ###
-**/nbproject/private/
-**/nbproject/Makefile-*.mk
-**/nbproject/Package-*.bash
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+out/*

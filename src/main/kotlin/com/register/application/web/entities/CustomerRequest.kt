@@ -1,14 +1,14 @@
 package com.register.application.web.entities
 
-import com.register.domain.entities.Client
+import com.register.domain.entities.Customer
 
-class ClientRequest(
+class CustomerRequest(
     val name:String,
     val age: Int,
     val address: AddressRequest
 ) {
 
-    fun toModel(): Client = Client(
+    fun toModel(): Customer = Customer(
         name = this.name,
         age = this.age,
         address = this.address.toModel()

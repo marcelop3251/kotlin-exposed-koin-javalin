@@ -1,9 +1,9 @@
 package com.register.domain
 
 import com.register.application.builder.ClientRequestBuild
-import com.register.domain.entities.Client
+import com.register.domain.entities.Customer
 import com.register.domain.service.RegisterService
-import com.register.resources.repositoriesimpl.ClientRepository
+import com.register.resources.repositoriesimpl.CustomerPostgresRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 
 class RegisterServiceTest {
 
-    private val clientRepositoryMock = mockk<ClientRepository>()
+    private val clientRepositoryMock = mockk<CustomerPostgresRepository>()
     private val registerService = RegisterService(clientRepositoryMock)
     private val clientBuild = ClientRequestBuild.build().toModel()
 
@@ -26,16 +26,7 @@ class RegisterServiceTest {
         verify { clientRepositoryMock.save(clientBuild) }
     }
 
-    @Test
-    fun should_return_list_clients(){
-        every { clientRepositoryMock.findAll() } returns listOf(clientBuild)
-        val clients = registerService.findAll()
-
-        assertThat(clients.size).isGreaterThan(0)
-        verify { clientRepositoryMock.findAll() }
-    }
-
-    private fun generateClient(client: Client) = client
+    private fun generateClient(customer: Customer) = customer
         .let {
             it.copy(
                 id=1,

@@ -2,25 +2,27 @@ package com.register.application.config
 
 
 import com.register.application.web.controllers.RegisterController
-import com.register.domain.entities.Address
-import com.register.domain.entities.Client
+import com.register.application.web.routes.RegisterRouter
+import com.register.domain.entities.Customer
+import com.register.domain.repository.AddressRepository
+import com.register.domain.repository.CustomerRepository
 import com.register.domain.service.RegisterService
 import com.register.domain.service.Service
-import com.register.resources.repositoriesimpl.ClientRepository
-import com.register.domain.repository.Repository
-import com.register.resources.repositoriesimpl.AddressRepository
-import org.koin.core.qualifier.named
+import com.register.resources.repositoriesimpl.AddressPostgresRepository
+import com.register.resources.repositoriesimpl.CustomerPostgresRepository
 import org.koin.dsl.module
 
 
 val modulesAll = module {
 
-    single<Repository<Address>>(named("address")) { AddressRepository() }
+    single<AddressRepository> { AddressPostgresRepository() }
 
-    single<Repository<Client>>(named("client")) { ClientRepository(get(named("address")))}
+    single<CustomerRepository> { CustomerPostgresRepository(get())}
 
-    single<Service<Client>> { RegisterService(get(named("client"))) }
+    single<Service<Customer>> { RegisterService(get()) }
 
     single { RegisterController(get()) }
+
+    single { RegisterRouter(get()) }
 
 }

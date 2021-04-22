@@ -4,7 +4,7 @@ import com.register.application.web.controllers.RegisterController
 import io.javalin.apibuilder.ApiBuilder.*
 
 
-class RegisterRouter(
+class RegistryRouter(
     private val controller: RegisterController
 ) {
 

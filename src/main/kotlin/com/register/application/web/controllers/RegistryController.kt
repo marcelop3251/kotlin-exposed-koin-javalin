@@ -12,11 +12,11 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.ThreadContext
 import org.eclipse.jetty.http.HttpStatus
 
-class RegisterController(
+class RegistryController(
     private val registerService : Service<Customer>
 ) {
 
-    private val logger = LogManager.getLogger(RegisterController::class.java)
+    private val logger = LogManager.getLogger(RegistryController::class.java)
 
    fun getClientById(ctx: Context): CustomerResponse {
         val customerId = ctx.pathParam("id")

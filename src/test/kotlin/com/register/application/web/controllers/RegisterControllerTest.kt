@@ -21,7 +21,7 @@ class RegisterControllerTest {
     private var ctxMock =  mockk<Context>(relaxed = true)
     private val registerServiceMock = mockk<Service<Customer>>()
     private val clientRequest = ClientRequestBuild.build()
-    private val registerController = RegisterController(registerServiceMock)
+    private val registerController = RegistryController(registerServiceMock)
 
     @Test
      fun should_return_client(){

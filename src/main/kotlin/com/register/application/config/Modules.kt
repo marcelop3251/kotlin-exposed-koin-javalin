@@ -1,8 +1,7 @@
 package com.register.application.config
 
-
-import com.register.application.web.controllers.RegisterController
-import com.register.application.web.routes.RegisterRouter
+import com.register.application.web.controllers.RegistryController
+import com.register.application.web.routes.RegistryRouter
 import com.register.domain.entities.Customer
 import com.register.domain.repository.AddressRepository
 import com.register.domain.repository.CustomerRepository
@@ -21,8 +20,8 @@ val modulesAll = module {
 
     single<Service<Customer>> { RegisterService(get()) }
 
-    single { RegisterController(get()) }
+    single { RegistryController(get()) }
 
-    single { RegisterRouter(get()) }
+    single { RegistryRouter(get()) }
 
 }

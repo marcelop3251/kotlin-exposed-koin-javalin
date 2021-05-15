@@ -1,11 +1,11 @@
 package com.register.application.web.routes
 
-import com.register.application.web.controllers.RegisterController
+import com.register.application.web.controllers.RegistryController
 import io.javalin.apibuilder.ApiBuilder.*
 
 
 class RegistryRouter(
-    private val controller: RegisterController
+    private val controller: RegistryController
 ) {
 
     fun register(){
